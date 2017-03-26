@@ -6,6 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.rambo.liveat500px.R;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initInstances() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(
@@ -45,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
     }
 
