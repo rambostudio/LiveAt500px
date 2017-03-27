@@ -14,6 +14,7 @@ import com.example.rambo.liveat500px.R;
 import com.example.rambo.liveat500px.adapter.PhotoListAdapter;
 import com.example.rambo.liveat500px.dao.PhotoItemCollectionDao;
 import com.example.rambo.liveat500px.manager.HttpManager;
+import com.example.rambo.liveat500px.manager.PhotoListManager;
 import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
 
 import java.io.IOException;
@@ -77,6 +78,8 @@ public class MainFragment extends Fragment {
             public void onResponse(Call<PhotoItemCollectionDao> call, Response<PhotoItemCollectionDao> response) {
                 if (response.isSuccessful()) {
                     PhotoItemCollectionDao dao = response.body();
+                    PhotoListManager.getInstance().setDao(dao);
+                    listAdapter.notifyDataSetChanged();
                     Toast.makeText(Contextor.getInstance().getContext(),
                             dao.getData().get(0).getCaption(),
                             Toast.LENGTH_LONG)
