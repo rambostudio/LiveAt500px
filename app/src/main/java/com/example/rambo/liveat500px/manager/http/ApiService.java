@@ -1,5 +1,7 @@
 package com.example.rambo.liveat500px.manager.http;
 
+import com.example.rambo.liveat500px.dao.PhotoItemCollectionDao;
+
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -12,7 +14,7 @@ import retrofit2.http.POST;
 public interface ApiService {
 
     @POST("list")
-    Call<Object> loadPhotoList();
+    Call<PhotoItemCollectionDao> loadPhotoList();
 
 }
 
