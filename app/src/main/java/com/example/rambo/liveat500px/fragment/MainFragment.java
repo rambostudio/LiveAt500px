@@ -3,6 +3,7 @@ package com.example.rambo.liveat500px.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.CompoundButtonCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.example.rambo.liveat500px.R;
 import com.example.rambo.liveat500px.adapter.PhotoListAdapter;
 import com.example.rambo.liveat500px.dao.PhotoItemCollectionDao;
 import com.example.rambo.liveat500px.manager.HttpManager;
+import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
 
 import java.io.IOException;
 
@@ -75,13 +77,13 @@ public class MainFragment extends Fragment {
             public void onResponse(Call<PhotoItemCollectionDao> call, Response<PhotoItemCollectionDao> response) {
                 if (response.isSuccessful()) {
                     PhotoItemCollectionDao dao = response.body();
-                    Toast.makeText(getActivity(),
+                    Toast.makeText(Contextor.getInstance().getContext(),
                             dao.getData().get(0).getCaption(),
                             Toast.LENGTH_LONG)
                     .show();
                 } else {
                     try {
-                        Toast.makeText(getActivity(),
+                        Toast.makeText(Contextor.getInstance().getContext(),
                              response.errorBody().string(),
                                 Toast.LENGTH_LONG)
                                 .show();
@@ -93,7 +95,7 @@ public class MainFragment extends Fragment {
 
             @Override
             public void onFailure(Call<PhotoItemCollectionDao> call, Throwable t) {
-                Toast.makeText(getActivity(),
+                Toast.makeText(Contextor.getInstance().getContext(),
                        t.toString(),
                         Toast.LENGTH_LONG)
                         .show();
