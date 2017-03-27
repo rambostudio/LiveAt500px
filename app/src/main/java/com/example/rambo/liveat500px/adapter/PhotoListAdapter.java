@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.rambo.liveat500px.dao.PhotoItemDao;
 import com.example.rambo.liveat500px.manager.PhotoListManager;
 import com.example.rambo.liveat500px.view.PhotoListItem;
 import com.inthecheesefactory.thecheeselibrary.manager.Contextor;
@@ -27,7 +28,8 @@ public class PhotoListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return null;
+
+        return PhotoListManager.getInstance().getDao().getData().get(i);
     }
 
     @Override
@@ -46,6 +48,11 @@ public class PhotoListAdapter extends BaseAdapter {
             item = new PhotoListItem(viewGroup.getContext());
 
         }
+        PhotoItemDao dao = (PhotoItemDao) getItem(i);
+        item.setNameText(dao.getCaption());
+        item.setDescriptionText(dao.getUsername() + "\n" + dao.getCamera());
+        item.setImageUrl(dao.getImageUrl());
+
         return item;
 
     }
