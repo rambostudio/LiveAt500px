@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.rambo.liveat500px.R;
+import com.example.rambo.liveat500px.adapter.PhotoListAdapter;
 
 
 /**
@@ -16,6 +18,8 @@ import com.example.rambo.liveat500px.R;
 @SuppressWarnings("unused")
 public class MainFragment extends Fragment {
 
+    ListView listView;
+    PhotoListAdapter listAdapter;
     public MainFragment() {
         super();
     }
@@ -52,6 +56,10 @@ public class MainFragment extends Fragment {
     @SuppressWarnings("UnusedParameters")
     private void initInstances(View rootView, Bundle savedInstanceState) {
         // Init 'View' instance(s) with rootView.findViewById here
+        listView = (ListView) rootView.findViewById(R.id.listView);
+        listAdapter = new PhotoListAdapter();
+        listView.setAdapter(listAdapter);
+
     }
 
     @Override
