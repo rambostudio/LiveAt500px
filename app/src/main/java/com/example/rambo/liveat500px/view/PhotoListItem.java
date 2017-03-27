@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.rambo.liveat500px.R;
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
 import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
@@ -20,6 +21,7 @@ public class PhotoListItem extends BaseCustomViewGroup {
 
     ImageView ivImg;
     TextView tvDescription, tvName;
+
     public PhotoListItem(Context context) {
         super(context);
         initInflate();
@@ -49,7 +51,7 @@ public class PhotoListItem extends BaseCustomViewGroup {
     }
 
     private void initInflate() {
-        inflate(getContext(),R.layout.list_item_photo, this);
+        inflate(getContext(), R.layout.list_item_photo, this);
     }
 
     private void initInstances() {
@@ -108,15 +110,17 @@ public class PhotoListItem extends BaseCustomViewGroup {
         super.onMeasure(widthMeasureSpec, newHeightMeasureSpec);
 
         // self
-        setMeasuredDimension(width,height);
+        setMeasuredDimension(width, height);
     }
 
     public void setImageUrl(String url) {
-        // TODO: 27/3/2560 Load Image 
+        Glide.with(getContext())
+                .load(url)
+                .into(ivImg);
     }
 
     public void setDescriptionText(String text) {
-      tvDescription.setText(text);
+        tvDescription.setText(text);
     }
 
     public void setNameText(String text) {
