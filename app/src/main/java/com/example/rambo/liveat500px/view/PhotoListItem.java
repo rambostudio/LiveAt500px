@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.rambo.liveat500px.R;
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
 import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
@@ -116,6 +117,8 @@ public class PhotoListItem extends BaseCustomViewGroup {
     public void setImageUrl(String url) {
         Glide.with(getContext())
                 .load(url)
+                .placeholder(R.drawable.loading)
+                .diskCacheStrategy(DiskCacheStrategy.ALL) // ใช้เมื่อรูปในแอพมีการแสดงผลหลายขนาาด
                 .into(ivImg);
     }
 

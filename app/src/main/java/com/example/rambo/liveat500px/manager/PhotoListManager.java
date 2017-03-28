@@ -22,6 +22,7 @@ public class PhotoListManager {
     private PhotoItemCollectionDao dao;
     private PhotoListManager() {
         mContext = Contextor.getInstance().getContext();
+        // Load data from Persistent Storage
     }
 
 
@@ -31,5 +32,6 @@ public class PhotoListManager {
 
     public void setDao(PhotoItemCollectionDao dao) {
         this.dao = dao;
+        // Save to Persistent Storage
     }
 }
